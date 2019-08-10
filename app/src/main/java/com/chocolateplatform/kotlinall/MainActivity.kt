@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Chocolate.enableChocolateTestAds(true)
-        Chocolate.enableLogging(true)
+        Chocolate.enableChocolateTestAds(true) //change to false when going live
+        Chocolate.enableLogging(true) //change to false when going live
         chocolateAdRequest = LVDOAdRequest(this)
         Chocolate.init(this, API_KEY, chocolateAdRequest, this)
 
