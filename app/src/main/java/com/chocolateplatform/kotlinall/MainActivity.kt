@@ -9,13 +9,14 @@ import android.widget.Toast
 import com.vdopia.ads.lw.*
 import com.vdopia.ads.lw.LVDOAdSize.IAB_MRECT
 
-class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener, RewardedAdListener, LVDOBannerAdListener {
+class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener, RewardedAdListener, LVDOBannerAdListener, PrerollAdListener {
 
     var API_KEY = "XqjhRR"
 
     private lateinit var chocolateRewardedAd: LVDORewardedAd
     private lateinit var chocolateInterstitialAd: LVDOInterstitialAd
     private lateinit var chocolateInviewAd: LVDOBannerAd
+    private lateinit var chocolatePrerollAd: PreRollVideoAd
     private lateinit var chocolateAdRequest: LVDOAdRequest
     private lateinit var adContainer: ViewGroup
 
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
         chocolateInterstitialAd = LVDOInterstitialAd(this, API_KEY, this)
         chocolateRewardedAd = LVDORewardedAd(this, API_KEY, this)
         chocolateInviewAd = LVDOBannerAd(this, IAB_MRECT, API_KEY, this)
+        chocolatePrerollAd = PreRollVideoAd(this)
         adContainer = findViewById(R.id.adContainer)
     }
 
@@ -47,7 +49,9 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
     }
 
     fun loadPrerollAd(view: View) {
-        Toast.makeText(this,"Preroll Ad feature coming soon...", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this,"Preroll Ad feature coming soon...", Toast.LENGTH_SHORT).show()
+        chocolatePrerollAd.visibility = View.VISIBLE
+        chocolatePrerollAd.loadAd(chocolateAdRequest, API_KEY, LVDOAdSize.PRE_ROLL, this)
     }
 
     override fun onInterstitialLoaded(p0: LVDOInterstitialAd?) {
@@ -99,6 +103,25 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
 
     override fun onBannerAdFailed(p0: View?, p1: LVDOConstants.LVDOErrorCode?) {
         Toast.makeText(this,"No-Fill for Native Inview Ad", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPrerollAdClicked(p0: View?) {
+    }
+
+    override fun onPrerollAdFailed(p0: View?, p1: LVDOConstants.LVDOErrorCode?) {
+        Toast.makeText(this,"No-Fill for Preroll Video Ad", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPrerollAdShown(p0: View?) {
+    }
+
+    override fun onPrerollAdLoaded(view: View?) {
+        adContainer.removeAllViews()
+        adContainer.addView(view)
+        chocolatePrerollAd.showAd()
+    }
+
+    override fun onPrerollAdCompleted(p0: View?) {
     }
 
     override fun onSuccess() {
