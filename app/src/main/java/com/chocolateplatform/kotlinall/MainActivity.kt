@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
         Chocolate.init(this, API_KEY, chocolateAdRequest, this)
 
         chocolateInterstitialAd = LVDOInterstitialAd(this, this)
-        chocolateRewardedAd = LVDORewardedAd(this, API_KEY, this)
+        chocolateRewardedAd = LVDORewardedAd(this, this)
         chocolateInviewAd = LVDOBannerAd(this, this)
         chocolatePrerollAd = PreRollVideoAd(this)
         adContainer = findViewById(R.id.adContainer)
