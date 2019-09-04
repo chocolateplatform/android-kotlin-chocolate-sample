@@ -29,9 +29,9 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
         chocolateAdRequest = LVDOAdRequest(this)
         Chocolate.init(this, API_KEY, chocolateAdRequest, this)
 
-        chocolateInterstitialAd = LVDOInterstitialAd(this, API_KEY, this)
+        chocolateInterstitialAd = LVDOInterstitialAd(this, this)
         chocolateRewardedAd = LVDORewardedAd(this, API_KEY, this)
-        chocolateInviewAd = LVDOBannerAd(this, IAB_MRECT, API_KEY, this)
+        chocolateInviewAd = LVDOBannerAd(this, this)
         chocolatePrerollAd = PreRollVideoAd(this)
         adContainer = findViewById(R.id.adContainer)
     }
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
     fun loadPrerollAd(view: View) {
         //Toast.makeText(this,"Preroll Ad feature coming soon...", Toast.LENGTH_SHORT).show()
         chocolatePrerollAd.visibility = View.VISIBLE
-        chocolatePrerollAd.loadAd(chocolateAdRequest, API_KEY, LVDOAdSize.PRE_ROLL, this)
+        chocolatePrerollAd.loadAd(chocolateAdRequest, LVDOAdSize.PRE_ROLL, this)
     }
 
     override fun onInterstitialLoaded(p0: LVDOInterstitialAd?) {
