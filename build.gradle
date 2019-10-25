@@ -20,7 +20,6 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
-        maven { url "https://adcolony.bintray.com/AdColony" }
         maven { url "https://dl.bintray.com/vdopiacorp/sdk" }
         maven { url "https://s3.amazonaws.com/moat-sdk-builds" }
         maven { url 'https://tapjoy.bintray.com/maven' }
