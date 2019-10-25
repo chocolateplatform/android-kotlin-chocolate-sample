@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
 
     private lateinit var chocolateRewardedAd: LVDORewardedAd
     private lateinit var chocolateInterstitialAd: LVDOInterstitialAd
-    private lateinit var chocolateInviewAd: LVDOBannerAd
+    private lateinit var chocolateBannerAd: LVDOBannerAd
     private lateinit var chocolateAdRequest: LVDOAdRequest
     private lateinit var adContainer: ViewGroup
 
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
 
         chocolateInterstitialAd = LVDOInterstitialAd(this, API_KEY, this)
         chocolateRewardedAd = LVDORewardedAd(this, API_KEY, this)
-        chocolateInviewAd = LVDOBannerAd(this, IAB_MRECT, API_KEY, this)
+        chocolateBannerAd = LVDOBannerAd(this, IAB_MRECT, API_KEY, this)
         adContainer = findViewById(R.id.adContainer)
     }
 
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
     }
 
     fun loadInviewAd(view: View) {
-        chocolateInviewAd.loadAd(chocolateAdRequest)
+        chocolateBannerAd.loadAd(chocolateAdRequest)
     }
 
     fun loadPrerollAd(view: View) {
