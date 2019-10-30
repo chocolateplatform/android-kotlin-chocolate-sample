@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 
 import com.vdopia.ads.lw.*
-import com.vdopia.ads.lw.LVDOAdSize.IAB_MRECT
+import com.vdopia.ads.lw.LVDOAdSize.MEDIUM_RECT_300_250
 
-class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener, RewardedAdListener, LVDOBannerAdListener {
+class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener,
+    RewardedAdListener, LVDOBannerAdListener, PrerollAdListener {
 
     var API_KEY = "XqjhRR"
 
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
     private lateinit var chocolateInterstitialAd: LVDOInterstitialAd
     private lateinit var chocolateBannerAd: LVDOBannerAd
     private lateinit var chocolateAdRequest: LVDOAdRequest
+    private lateinit var chocolatePrerollAd: PreRollVideoAd
     private lateinit var adContainer: ViewGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,9 +30,10 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
         chocolateAdRequest = LVDOAdRequest(this)
         Chocolate.init(this, API_KEY, chocolateAdRequest, this)
 
-        chocolateInterstitialAd = LVDOInterstitialAd(this, API_KEY, this)
-        chocolateRewardedAd = LVDORewardedAd(this, API_KEY, this)
-        chocolateBannerAd = LVDOBannerAd(this, IAB_MRECT, API_KEY, this)
+        chocolateInterstitialAd = LVDOInterstitialAd(this, this)
+        chocolateRewardedAd = LVDORewardedAd(this, this)
+        chocolateBannerAd = LVDOBannerAd(this, MEDIUM_RECT_300_250, this)
+        chocolatePrerollAd = PreRollVideoAd(this);
         adContainer = findViewById(R.id.adContainer)
     }
 
@@ -47,7 +50,7 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
     }
 
     fun loadPrerollAd(view: View) {
-        Toast.makeText(this,"Preroll Ad feature coming soon...", Toast.LENGTH_SHORT).show()
+        chocolatePrerollAd.loadAd(chocolateAdRequest, LVDOAdSize.PREROLL_FULLSCREEN, this)
     }
 
     override fun onInterstitialLoaded(p0: LVDOInterstitialAd?) {
@@ -107,4 +110,27 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
     override fun onError(p0: String?) {
     }
 
+    override fun onPrerollAdClicked(p0: View?) {
+        //not implemented
+    }
+
+    override fun onPrerollAdShownError(p0: View?) {
+        //not implemented
+    }
+
+    override fun onPrerollAdFailed(p0: View?, p1: LVDOConstants.LVDOErrorCode?) {
+        //not implemented
+    }
+
+    override fun onPrerollAdShown(p0: View?) {
+        //not implemented
+    }
+
+    override fun onPrerollAdLoaded(p0: View?) {
+        //not implemented
+    }
+
+    override fun onPrerollAdCompleted(p0: View?) {
+        //not implemented
+    }
 }
