@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
         chocolateRewardedAd.loadAd(chocolateAdRequest)
     }
 
-    fun loadInviewAd(view: View) {
+    fun loadBannerAd(view: View) {
         chocolateBannerAd.loadAd(chocolateAdRequest)
     }
 
@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity(), InitCallback, LVDOInterstitialListener
     }
 
     override fun onBannerAdFailed(p0: View?, p1: LVDOConstants.LVDOErrorCode?) {
-        Toast.makeText(this,"No-Fill for Native Inview Ad", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"No-Fill for Banner Ad", Toast.LENGTH_SHORT).show()
     }
 
     override fun onSuccess() {
