@@ -44,7 +44,7 @@ dependencies {
 
     implementation 'com.vdopia.ads.lw:tapjoy-adapter:12.2.1.a'
     implementation 'com.tapjoy:tapjoy-android-sdk:12.2.1@aar'
-    implementation 'com.vdopia.ads.lw:unity-adapter:3.2.0'
+    implementation 'com.vdopia.ads.lw:unity-adapter:3.4.0'
     implementation 'com.vdopia.ads.lw:vungle-adapter:6.4.11'
     implementation('com.github.vungle:vungle-android-sdk:6.4.11') {
         exclude group: 'com.android.support'
